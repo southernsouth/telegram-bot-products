@@ -5,14 +5,8 @@ from asgiref.sync import sync_to_async
 from telebot.async_telebot import AsyncTeleBot
 from loguru import logger
 import time, math
+from dborm import get_products_count
 
-import os
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
-
-import django
-django.setup()
-from django.core.management.base import BaseCommand
-from products.models import ProductsList
 
 
 logger.add('logs/bot.log', format='{time} {level} {message}')
@@ -36,10 +30,11 @@ async def send_welcome(message):
 async def gen_product_button(page=int):
     page -= 1
     if page > 0: page = int(str(page) + '0')
-
+    
+    products_count = await get_products_count()
     products = []
-    for i in range(await sync_to_async(ProductsList.objects.count)()):
-        if len(products) == 10 or page + (i + 1) > await sync_to_async(ProductsList.objects.count)():
+    for i in range(products_count):
+        if len(products) == 10 or page + (i + 1) > products_count:
             break
         product = await sync_to_async(ProductsList.objects.get)(id=(page + (i + 1)))
         products.append([types.InlineKeyboardButton(text=product.product_name, callback_data=str(i + 1))])
