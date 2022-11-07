@@ -5,7 +5,10 @@ from asgiref.sync import sync_to_async
 from telebot.async_telebot import AsyncTeleBot
 from loguru import logger
 import time, math
-from dborm import get_products_count
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from dborm import get_products_count, get_products_id, get_product_name
 
 
 
@@ -18,7 +21,7 @@ bot = AsyncTeleBot(token)
 @logger.catch
 async def send_welcome(message):
     logger.info(f'{str(message.chat.id)} | start bot')
-    
+
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
     btn1 = types.KeyboardButton('Products')
 
@@ -28,17 +31,19 @@ async def send_welcome(message):
 
 @logger.catch
 async def gen_product_button(page=int):
-    page -= 1
-    if page > 0: page = int(str(page) + '0')
-    
+    products_id = await get_products_id()
     products_count = await get_products_count()
-    products = []
-    for i in range(products_count):
-        if len(products) == 10 or page + (i + 1) > products_count:
-            break
-        product = await sync_to_async(ProductsList.objects.get)(id=(page + (i + 1)))
-        products.append([types.InlineKeyboardButton(text=product.product_name, callback_data=str(i + 1))])
+    page_count = math.ceil(products_count / 10)
+    page = (page - 1) * 10
 
+    if page / 10 == page_count: index = products_count
+    else: index = page + 10
+    products_id = products_id[page:index]
+
+    products = []
+    for i in range(await sync_to_async(len)(products_id)):
+        product_name = await get_product_name(products_id[i])
+        products.append([types.InlineKeyboardButton(text=str(product_name), callback_data=str(products_id[i]))])
     return products
 
 @logger.catch
@@ -46,11 +51,11 @@ async def gen_page_button(page=int):
     page_index = page - 2
     if page_index < 1: page_index = 1
     pages = []
-    page_count = math.ceil(await sync_to_async(ProductsList.objects.count)() / 10)
+    page_count = math.ceil(await get_products_count() / 10)
 
     btn1 = types.InlineKeyboardButton(text='<<', callback_data='<<')
     btn2 = types.InlineKeyboardButton(text=f'>>', callback_data='>>')
-    
+
     pages.append(btn1)
     for i in range(page_count):
         if i == 5:
@@ -65,11 +70,11 @@ async def gen_page_button(page=int):
 async def bot_func(message):
     if message.text == 'Products':
         logger.info(f'{message.chat.id} | press "Products"')
-        
-        
-        products = await gen_product_button(1)
-        pages = await gen_page_button(1)
-        
+
+
+        products = await gen_product_button(29)
+        pages = await gen_page_button(29)
+
         markup = types.InlineKeyboardMarkup([*products, pages])
 
         await bot.send_message(message.chat.id, 'Products:', reply_markup=markup)

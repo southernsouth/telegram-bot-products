@@ -6,7 +6,7 @@ from faker import Faker
 
 @admin.register(ProductsList)
 class ProductsListAdmin(admin.ModelAdmin):
-    list_display = ('product_name', 'price')
+    list_display = ('product_name', 'price', 'status')
 
     '''for i in range(2):
         faker = Faker('en_us')

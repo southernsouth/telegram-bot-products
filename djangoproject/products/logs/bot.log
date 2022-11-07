@@ -1,0 +1,875 @@
+2022-11-07T01:19:51.917903+0200 INFO Start bot
+2022-11-07T01:20:00.390533+0200 INFO 2032701686 | press "Products"
+2022-11-07T01:20:00.391976+0200 ERROR An error has been caught in function 'bot_func', process 'MainProcess' (21896), thread 'MainThread' (519382335184):
+Traceback (most recent call last):
+
+  File "/data/data/com.termux/files/home/python/telegram-bot-products/djangoproject/products/telegrambot.py", line 84, in <module>
+    asyncio.run(bot.polling(non_stop=True, interval=1, timeout=0))
+    │       │   │   └ <function AsyncTeleBot.polling at 0x78e8cffec0>
+    │       │   └ <telebot.async_telebot.AsyncTeleBot object at 0x78e732a250>
+    │       └ <function run at 0x78e95477e0>
+    └ <module 'asyncio' from '/data/data/com.termux/files/usr/lib/python3.11/asyncio/__init__.py'>
+
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           │      │   └ <coroutine object AsyncTeleBot.polling at 0x78e72f8890>
+           │      └ <function Runner.run at 0x78e9564860>
+           └ <asyncio.runners.Runner object at 0x78e732ab90>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<AsyncTeleBot.polling() running at /data/data/com.termux/files/home/python/telegram-bot-prod...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x78e95623e0>
+           │    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x78e732ab90>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/base_events.py", line 637, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x78e9562340>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/base_events.py", line 604, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x78e9564180>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/base_events.py", line 1909, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x78e977d080>
+    └ <Handle <TaskStepMethWrapper object at 0x78e732c910>()>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle <TaskStepMethWrapper object at 0x78e732c910>()>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle <TaskStepMethWrapper object at 0x78e732c910>()>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle <TaskStepMethWrapper object at 0x78e732c910>()>
+  File "/data/data/com.termux/files/home/python/telegram-bot-products/venv/lib/python3.11/site-packages/telebot/async_telebot.py", line 502, in _run_middlewares_and_handlers
+    result = await handler['function'](message)
+                   │                   └ <telebot.types.Message object at 0x78e733c410>
+                   └ {'function': <function bot_func at 0x78e7334220>, 'pass_bot': False, 'filters': {'content_types': ['text']}}
+
+> File "/data/data/com.termux/files/home/python/telegram-bot-products/djangoproject/products/telegrambot.py", line 73, in bot_func
+    products = await gen_product_button(1)
+                     └ <function gen_product_button at 0x78e73139c0>
+
+  File "/data/data/com.termux/files/home/python/telegram-bot-products/djangoproject/products/telegrambot.py", line 37, in gen_product_button
+    products_count = await get_products_count()
+                           └ <function get_products_count at 0x78e7d5c680>
+
+  File "/data/data/com.termux/files/home/python/telegram-bot-products/djangoproject/dborm.py", line 16, in get_products_count
+    return await sync_to_async(ProductList.objects.count)()
+                 └ <function sync_to_async at 0x78e95ce2a0>
+
+NameError: name 'ProductList' is not defined
+2022-11-07T01:20:00.457849+0200 ERROR An error has been caught in function 'bot_func', process 'MainProcess' (21896), thread 'MainThread' (519382335184):
+Traceback (most recent call last):
+
+  File "/data/data/com.termux/files/home/python/telegram-bot-products/djangoproject/products/telegrambot.py", line 84, in <module>
+    asyncio.run(bot.polling(non_stop=True, interval=1, timeout=0))
+    │       │   │   └ <function AsyncTeleBot.polling at 0x78e8cffec0>
+    │       │   └ <telebot.async_telebot.AsyncTeleBot object at 0x78e732a250>
+    │       └ <function run at 0x78e95477e0>
+    └ <module 'asyncio' from '/data/data/com.termux/files/usr/lib/python3.11/asyncio/__init__.py'>
+
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           │      │   └ <coroutine object AsyncTeleBot.polling at 0x78e72f8890>
+           │      └ <function Runner.run at 0x78e9564860>
+           └ <asyncio.runners.Runner object at 0x78e732ab90>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<AsyncTeleBot.polling() running at /data/data/com.termux/files/home/python/telegram-bot-prod...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x78e95623e0>
+           │    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x78e732ab90>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/base_events.py", line 637, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x78e9562340>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/base_events.py", line 604, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x78e9564180>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/base_events.py", line 1909, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x78e977d080>
+    └ <Handle <TaskStepMethWrapper object at 0x78e732c910>()>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle <TaskStepMethWrapper object at 0x78e732c910>()>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle <TaskStepMethWrapper object at 0x78e732c910>()>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle <TaskStepMethWrapper object at 0x78e732c910>()>
+  File "/data/data/com.termux/files/home/python/telegram-bot-products/venv/lib/python3.11/site-packages/telebot/async_telebot.py", line 502, in _run_middlewares_and_handlers
+    result = await handler['function'](message)
+                   │                   └ <telebot.types.Message object at 0x78e733c410>
+                   └ {'function': <function bot_func at 0x78e7334220>, 'pass_bot': False, 'filters': {'content_types': ['text']}}
+
+> File "/data/data/com.termux/files/home/python/telegram-bot-products/djangoproject/products/telegrambot.py", line 74, in bot_func
+    pages = await gen_page_button(1)
+                  └ <function gen_page_button at 0x78e7313d80>
+
+  File "/data/data/com.termux/files/home/python/telegram-bot-products/djangoproject/products/telegrambot.py", line 52, in gen_page_button
+    page_count = math.ceil(await sync_to_async(ProductsList.objects.count)() / 10)
+                 │    │          └ <function sync_to_async at 0x78e95ce2a0>
+                 │    └ <built-in function ceil>
+                 └ <module 'math' from '/data/data/com.termux/files/usr/lib/python3.11/lib-dynload/math.cpython-311.so'>
+
+NameError: name 'ProductsList' is not defined
+2022-11-07T01:20:00.479554+0200 ERROR An error has been caught in function '_run_middlewares_and_handlers', process 'MainProcess' (21896), thread 'MainThread' (519382335184):
+Traceback (most recent call last):
+
+  File "/data/data/com.termux/files/home/python/telegram-bot-products/djangoproject/products/telegrambot.py", line 84, in <module>
+    asyncio.run(bot.polling(non_stop=True, interval=1, timeout=0))
+    │       │   │   └ <function AsyncTeleBot.polling at 0x78e8cffec0>
+    │       │   └ <telebot.async_telebot.AsyncTeleBot object at 0x78e732a250>
+    │       └ <function run at 0x78e95477e0>
+    └ <module 'asyncio' from '/data/data/com.termux/files/usr/lib/python3.11/asyncio/__init__.py'>
+
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           │      │   └ <coroutine object AsyncTeleBot.polling at 0x78e72f8890>
+           │      └ <function Runner.run at 0x78e9564860>
+           └ <asyncio.runners.Runner object at 0x78e732ab90>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<AsyncTeleBot.polling() running at /data/data/com.termux/files/home/python/telegram-bot-prod...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x78e95623e0>
+           │    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x78e732ab90>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/base_events.py", line 637, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x78e9562340>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/base_events.py", line 604, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x78e9564180>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/base_events.py", line 1909, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x78e977d080>
+    └ <Handle <TaskStepMethWrapper object at 0x78e732c910>()>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle <TaskStepMethWrapper object at 0x78e732c910>()>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle <TaskStepMethWrapper object at 0x78e732c910>()>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle <TaskStepMethWrapper object at 0x78e732c910>()>
+> File "/data/data/com.termux/files/home/python/telegram-bot-products/venv/lib/python3.11/site-packages/telebot/async_telebot.py", line 502, in _run_middlewares_and_handlers
+    result = await handler['function'](message)
+                   │                   └ <telebot.types.Message object at 0x78e733c410>
+                   └ {'function': <function bot_func at 0x78e7334220>, 'pass_bot': False, 'filters': {'content_types': ['text']}}
+
+  File "/data/data/com.termux/files/home/python/telegram-bot-products/djangoproject/products/telegrambot.py", line 76, in bot_func
+    markup = types.InlineKeyboardMarkup([*products, pages])
+             │     │                      │         └ None
+             │     │                      └ None
+             │     └ <class 'telebot.types.InlineKeyboardMarkup'>
+             └ <module 'telebot.types' from '/data/data/com.termux/files/home/python/telegram-bot-products/venv/lib/python3.11/site-packages...
+
+TypeError: Value after * must be an iterable, not NoneType
+2022-11-07T01:20:14.575764+0200 INFO Start bot
+2022-11-07T01:20:18.302530+0200 INFO Start bot
+2022-11-07T01:20:19.853164+0200 INFO Start bot
+2022-11-07T01:20:21.285106+0200 INFO Start bot
+2022-11-07T01:20:21.531578+0200 INFO Start bot
+2022-11-07T01:20:21.715121+0200 INFO Stopping the application
+2022-11-07T22:19:38.476535+0200 INFO Start bot
+2022-11-07T22:19:52.609561+0200 INFO 2032701686 | start bot
+2022-11-07T22:19:58.885982+0200 INFO 2032701686 | press "Products"
+2022-11-07T22:19:58.888399+0200 ERROR An error has been caught in function 'bot_func', process 'MainProcess' (28303), thread 'MainThread' (509923053264):
+Traceback (most recent call last):
+
+  File "/data/data/com.termux/files/home/python/telegram-bot-products/djangoproject/products/telegrambot.py", line 84, in <module>
+    asyncio.run(bot.polling(non_stop=True, interval=1, timeout=0))
+    │       │   │   └ <function AsyncTeleBot.polling at 0x76b4f7fec0>
+    │       │   └ <telebot.async_telebot.AsyncTeleBot object at 0x76b3592210>
+    │       └ <function run at 0x76b57db7e0>
+    └ <module 'asyncio' from '/data/data/com.termux/files/usr/lib/python3.11/asyncio/__init__.py'>
+
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           │      │   └ <coroutine object AsyncTeleBot.polling at 0x76b3560890>
+           │      └ <function Runner.run at 0x76b57f8860>
+           └ <asyncio.runners.Runner object at 0x76b355acd0>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<AsyncTeleBot.polling() running at /data/data/com.termux/files/home/python/telegram-bot-prod...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x76b57f63e0>
+           │    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x76b355acd0>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/base_events.py", line 637, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x76b57f6340>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/base_events.py", line 604, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x76b57f8180>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/base_events.py", line 1909, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x76b59f5080>
+    └ <Handle <TaskStepMethWrapper object at 0x76b3595780>()>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle <TaskStepMethWrapper object at 0x76b3595780>()>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle <TaskStepMethWrapper object at 0x76b3595780>()>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle <TaskStepMethWrapper object at 0x76b3595780>()>
+  File "/data/data/com.termux/files/home/python/telegram-bot-products/venv/lib/python3.11/site-packages/telebot/async_telebot.py", line 502, in _run_middlewares_and_handlers
+    result = await handler['function'](message)
+                   │                   └ <telebot.types.Message object at 0x76b35a6990>
+                   └ {'function': <function bot_func at 0x76b359c220>, 'pass_bot': False, 'filters': {'content_types': ['text']}}
+
+> File "/data/data/com.termux/files/home/python/telegram-bot-products/djangoproject/products/telegrambot.py", line 73, in bot_func
+    products = await gen_product_button(1)
+                     └ <function gen_product_button at 0x76b357b9c0>
+
+  File "/data/data/com.termux/files/home/python/telegram-bot-products/djangoproject/products/telegrambot.py", line 37, in gen_product_button
+    products_count = await get_products_count()
+                           └ <function get_products_count at 0x76b3fc4680>
+
+  File "/data/data/com.termux/files/home/python/telegram-bot-products/djangoproject/dborm.py", line 16, in get_products_count
+    return await sync_to_async(ProductList.objects.count)()
+                 └ <function sync_to_async at 0x76b58622a0>
+
+NameError: name 'ProductList' is not defined
+2022-11-07T22:19:58.957869+0200 ERROR An error has been caught in function 'bot_func', process 'MainProcess' (28303), thread 'MainThread' (509923053264):
+Traceback (most recent call last):
+
+  File "/data/data/com.termux/files/home/python/telegram-bot-products/djangoproject/products/telegrambot.py", line 84, in <module>
+    asyncio.run(bot.polling(non_stop=True, interval=1, timeout=0))
+    │       │   │   └ <function AsyncTeleBot.polling at 0x76b4f7fec0>
+    │       │   └ <telebot.async_telebot.AsyncTeleBot object at 0x76b3592210>
+    │       └ <function run at 0x76b57db7e0>
+    └ <module 'asyncio' from '/data/data/com.termux/files/usr/lib/python3.11/asyncio/__init__.py'>
+
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           │      │   └ <coroutine object AsyncTeleBot.polling at 0x76b3560890>
+           │      └ <function Runner.run at 0x76b57f8860>
+           └ <asyncio.runners.Runner object at 0x76b355acd0>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<AsyncTeleBot.polling() running at /data/data/com.termux/files/home/python/telegram-bot-prod...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x76b57f63e0>
+           │    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x76b355acd0>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/base_events.py", line 637, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x76b57f6340>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/base_events.py", line 604, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x76b57f8180>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/base_events.py", line 1909, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x76b59f5080>
+    └ <Handle <TaskStepMethWrapper object at 0x76b3595780>()>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle <TaskStepMethWrapper object at 0x76b3595780>()>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle <TaskStepMethWrapper object at 0x76b3595780>()>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle <TaskStepMethWrapper object at 0x76b3595780>()>
+  File "/data/data/com.termux/files/home/python/telegram-bot-products/venv/lib/python3.11/site-packages/telebot/async_telebot.py", line 502, in _run_middlewares_and_handlers
+    result = await handler['function'](message)
+                   │                   └ <telebot.types.Message object at 0x76b35a6990>
+                   └ {'function': <function bot_func at 0x76b359c220>, 'pass_bot': False, 'filters': {'content_types': ['text']}}
+
+> File "/data/data/com.termux/files/home/python/telegram-bot-products/djangoproject/products/telegrambot.py", line 74, in bot_func
+    pages = await gen_page_button(1)
+                  └ <function gen_page_button at 0x76b357bd80>
+
+  File "/data/data/com.termux/files/home/python/telegram-bot-products/djangoproject/products/telegrambot.py", line 52, in gen_page_button
+    page_count = math.ceil(await sync_to_async(ProductsList.objects.count)() / 10)
+                 │    │          └ <function sync_to_async at 0x76b58622a0>
+                 │    └ <built-in function ceil>
+                 └ <module 'math' from '/data/data/com.termux/files/usr/lib/python3.11/lib-dynload/math.cpython-311.so'>
+
+NameError: name 'ProductsList' is not defined
+2022-11-07T22:19:58.989974+0200 ERROR An error has been caught in function '_run_middlewares_and_handlers', process 'MainProcess' (28303), thread 'MainThread' (509923053264):
+Traceback (most recent call last):
+
+  File "/data/data/com.termux/files/home/python/telegram-bot-products/djangoproject/products/telegrambot.py", line 84, in <module>
+    asyncio.run(bot.polling(non_stop=True, interval=1, timeout=0))
+    │       │   │   └ <function AsyncTeleBot.polling at 0x76b4f7fec0>
+    │       │   └ <telebot.async_telebot.AsyncTeleBot object at 0x76b3592210>
+    │       └ <function run at 0x76b57db7e0>
+    └ <module 'asyncio' from '/data/data/com.termux/files/usr/lib/python3.11/asyncio/__init__.py'>
+
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           │      │   └ <coroutine object AsyncTeleBot.polling at 0x76b3560890>
+           │      └ <function Runner.run at 0x76b57f8860>
+           └ <asyncio.runners.Runner object at 0x76b355acd0>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<AsyncTeleBot.polling() running at /data/data/com.termux/files/home/python/telegram-bot-prod...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x76b57f63e0>
+           │    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x76b355acd0>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/base_events.py", line 637, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x76b57f6340>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/base_events.py", line 604, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x76b57f8180>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/base_events.py", line 1909, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x76b59f5080>
+    └ <Handle <TaskStepMethWrapper object at 0x76b3595780>()>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle <TaskStepMethWrapper object at 0x76b3595780>()>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle <TaskStepMethWrapper object at 0x76b3595780>()>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle <TaskStepMethWrapper object at 0x76b3595780>()>
+> File "/data/data/com.termux/files/home/python/telegram-bot-products/venv/lib/python3.11/site-packages/telebot/async_telebot.py", line 502, in _run_middlewares_and_handlers
+    result = await handler['function'](message)
+                   │                   └ <telebot.types.Message object at 0x76b35a6990>
+                   └ {'function': <function bot_func at 0x76b359c220>, 'pass_bot': False, 'filters': {'content_types': ['text']}}
+
+  File "/data/data/com.termux/files/home/python/telegram-bot-products/djangoproject/products/telegrambot.py", line 76, in bot_func
+    markup = types.InlineKeyboardMarkup([*products, pages])
+             │     │                      │         └ None
+             │     │                      └ None
+             │     └ <class 'telebot.types.InlineKeyboardMarkup'>
+             └ <module 'telebot.types' from '/data/data/com.termux/files/home/python/telegram-bot-products/venv/lib/python3.11/site-packages...
+
+TypeError: Value after * must be an iterable, not NoneType
+2022-11-07T22:20:11.980233+0200 INFO Start bot
+2022-11-07T22:20:12.121310+0200 INFO Stopping the application
+2022-11-07T22:23:20.153291+0200 INFO Start bot
+2022-11-07T22:23:34.019855+0200 INFO 2032701686 | press "Products"
+2022-11-07T22:23:34.021730+0200 ERROR An error has been caught in function 'bot_func', process 'MainProcess' (28766), thread 'MainThread' (506975117008):
+Traceback (most recent call last):
+
+  File "/data/data/com.termux/files/home/python/telegram-bot-products/djangoproject/products/telegrambot.py", line 85, in <module>
+    asyncio.run(bot.polling(non_stop=True, interval=1, timeout=0))
+    │       │   │   └ <function AsyncTeleBot.polling at 0x7605513ec0>
+    │       │   └ <telebot.async_telebot.AsyncTeleBot object at 0x7603b220d0>
+    │       └ <function run at 0x7605d537e0>
+    └ <module 'asyncio' from '/data/data/com.termux/files/usr/lib/python3.11/asyncio/__init__.py'>
+
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           │      │   └ <coroutine object AsyncTeleBot.polling at 0x7603af0890>
+           │      └ <function Runner.run at 0x7605d70860>
+           └ <asyncio.runners.Runner object at 0x7603b22a10>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<AsyncTeleBot.polling() running at /data/data/com.termux/files/home/python/telegram-bot-prod...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x7605d6e3e0>
+           │    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x7603b22a10>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/base_events.py", line 637, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x7605d6e340>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/base_events.py", line 604, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x7605d70180>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/base_events.py", line 1909, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x7605f75080>
+    └ <Handle <TaskStepMethWrapper object at 0x7603b25390>()>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle <TaskStepMethWrapper object at 0x7603b25390>()>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle <TaskStepMethWrapper object at 0x7603b25390>()>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle <TaskStepMethWrapper object at 0x7603b25390>()>
+  File "/data/data/com.termux/files/home/python/telegram-bot-products/venv/lib/python3.11/site-packages/telebot/async_telebot.py", line 502, in _run_middlewares_and_handlers
+    result = await handler['function'](message)
+                   │                   └ <telebot.types.Message object at 0x7603b35d10>
+                   └ {'function': <function bot_func at 0x7603b2c220>, 'pass_bot': False, 'filters': {'content_types': ['text']}}
+
+> File "/data/data/com.termux/files/home/python/telegram-bot-products/djangoproject/products/telegrambot.py", line 73, in bot_func
+    products = await gen_product_button(1)
+                     └ <function gen_product_button at 0x7603b0b9c0>
+
+  File "/data/data/com.termux/files/home/python/telegram-bot-products/djangoproject/products/telegrambot.py", line 37, in gen_product_button
+    products_count = await get_products_count()
+                           └ <function get_products_count at 0x760453c680>
+
+  File "/data/data/com.termux/files/home/python/telegram-bot-products/djangoproject/dborm.py", line 16, in get_products_count
+    return await sync_to_async(ProductList.objects.count)()
+                 └ <function sync_to_async at 0x7605dda2a0>
+
+NameError: name 'ProductList' is not defined
+2022-11-07T22:23:34.075088+0200 ERROR An error has been caught in function 'bot_func', process 'MainProcess' (28766), thread 'MainThread' (506975117008):
+Traceback (most recent call last):
+
+  File "/data/data/com.termux/files/home/python/telegram-bot-products/djangoproject/products/telegrambot.py", line 85, in <module>
+    asyncio.run(bot.polling(non_stop=True, interval=1, timeout=0))
+    │       │   │   └ <function AsyncTeleBot.polling at 0x7605513ec0>
+    │       │   └ <telebot.async_telebot.AsyncTeleBot object at 0x7603b220d0>
+    │       └ <function run at 0x7605d537e0>
+    └ <module 'asyncio' from '/data/data/com.termux/files/usr/lib/python3.11/asyncio/__init__.py'>
+
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           │      │   └ <coroutine object AsyncTeleBot.polling at 0x7603af0890>
+           │      └ <function Runner.run at 0x7605d70860>
+           └ <asyncio.runners.Runner object at 0x7603b22a10>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<AsyncTeleBot.polling() running at /data/data/com.termux/files/home/python/telegram-bot-prod...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x7605d6e3e0>
+           │    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x7603b22a10>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/base_events.py", line 637, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x7605d6e340>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/base_events.py", line 604, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x7605d70180>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/base_events.py", line 1909, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x7605f75080>
+    └ <Handle <TaskStepMethWrapper object at 0x7603b25390>()>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle <TaskStepMethWrapper object at 0x7603b25390>()>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle <TaskStepMethWrapper object at 0x7603b25390>()>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle <TaskStepMethWrapper object at 0x7603b25390>()>
+  File "/data/data/com.termux/files/home/python/telegram-bot-products/venv/lib/python3.11/site-packages/telebot/async_telebot.py", line 502, in _run_middlewares_and_handlers
+    result = await handler['function'](message)
+                   │                   └ <telebot.types.Message object at 0x7603b35d10>
+                   └ {'function': <function bot_func at 0x7603b2c220>, 'pass_bot': False, 'filters': {'content_types': ['text']}}
+
+> File "/data/data/com.termux/files/home/python/telegram-bot-products/djangoproject/products/telegrambot.py", line 74, in bot_func
+    pages = await gen_page_button(1)
+                  └ <function gen_page_button at 0x7603b0bd80>
+
+  File "/data/data/com.termux/files/home/python/telegram-bot-products/djangoproject/products/telegrambot.py", line 52, in gen_page_button
+    page_count = math.ceil(await sync_to_async(ProductsList.objects.count)() / 10)
+                 │    │          └ <function sync_to_async at 0x7605dda2a0>
+                 │    └ <built-in function ceil>
+                 └ <module 'math' from '/data/data/com.termux/files/usr/lib/python3.11/lib-dynload/math.cpython-311.so'>
+
+NameError: name 'ProductsList' is not defined
+2022-11-07T22:23:34.104323+0200 ERROR An error has been caught in function '_run_middlewares_and_handlers', process 'MainProcess' (28766), thread 'MainThread' (506975117008):
+Traceback (most recent call last):
+
+  File "/data/data/com.termux/files/home/python/telegram-bot-products/djangoproject/products/telegrambot.py", line 85, in <module>
+    asyncio.run(bot.polling(non_stop=True, interval=1, timeout=0))
+    │       │   │   └ <function AsyncTeleBot.polling at 0x7605513ec0>
+    │       │   └ <telebot.async_telebot.AsyncTeleBot object at 0x7603b220d0>
+    │       └ <function run at 0x7605d537e0>
+    └ <module 'asyncio' from '/data/data/com.termux/files/usr/lib/python3.11/asyncio/__init__.py'>
+
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           │      │   └ <coroutine object AsyncTeleBot.polling at 0x7603af0890>
+           │      └ <function Runner.run at 0x7605d70860>
+           └ <asyncio.runners.Runner object at 0x7603b22a10>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<AsyncTeleBot.polling() running at /data/data/com.termux/files/home/python/telegram-bot-prod...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x7605d6e3e0>
+           │    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x7603b22a10>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/base_events.py", line 637, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x7605d6e340>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/base_events.py", line 604, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x7605d70180>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/base_events.py", line 1909, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x7605f75080>
+    └ <Handle <TaskStepMethWrapper object at 0x7603b25390>()>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle <TaskStepMethWrapper object at 0x7603b25390>()>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle <TaskStepMethWrapper object at 0x7603b25390>()>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle <TaskStepMethWrapper object at 0x7603b25390>()>
+> File "/data/data/com.termux/files/home/python/telegram-bot-products/venv/lib/python3.11/site-packages/telebot/async_telebot.py", line 502, in _run_middlewares_and_handlers
+    result = await handler['function'](message)
+                   │                   └ <telebot.types.Message object at 0x7603b35d10>
+                   └ {'function': <function bot_func at 0x7603b2c220>, 'pass_bot': False, 'filters': {'content_types': ['text']}}
+
+  File "/data/data/com.termux/files/home/python/telegram-bot-products/djangoproject/products/telegrambot.py", line 77, in bot_func
+    markup = types.InlineKeyboardMarkup([*products, pages])
+             │     │                      │         └ None
+             │     │                      └ None
+             │     └ <class 'telebot.types.InlineKeyboardMarkup'>
+             └ <module 'telebot.types' from '/data/data/com.termux/files/home/python/telegram-bot-products/venv/lib/python3.11/site-packages...
+
+TypeError: Value after * must be an iterable, not NoneType
+2022-11-07T22:23:41.531171+0200 INFO Start bot
+2022-11-07T22:23:41.684161+0200 INFO Stopping the application
+2022-11-07T23:18:17.617260+0200 INFO Start bot
+2022-11-07T23:18:30.273985+0200 INFO 2032701686 | press "Products"
+2022-11-07T23:18:30.278232+0200 ERROR An error has been caught in function 'bot_func', process 'MainProcess' (19568), thread 'MainThread' (485566312144):
+Traceback (most recent call last):
+
+  File "/data/data/com.termux/files/home/python/telegram-bot-products/djangoproject/products/telegrambot.py", line 85, in <module>
+    asyncio.run(bot.polling(non_stop=True, interval=1, timeout=0))
+    │       │   │   └ <function AsyncTeleBot.polling at 0x7109058040>
+    │       │   └ <telebot.async_telebot.AsyncTeleBot object at 0x71078de550>
+    │       └ <function run at 0x7109b9c5e0>
+    └ <module 'asyncio' from '/data/data/com.termux/files/usr/lib/python3.11/asyncio/__init__.py'>
+
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           │      │   └ <coroutine object AsyncTeleBot.polling at 0x71078656d0>
+           │      └ <function Runner.run at 0x7109b9c9a0>
+           └ <asyncio.runners.Runner object at 0x71082d0e10>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<AsyncTeleBot.polling() running at /data/data/com.termux/files/home/python/telegram-bot-prod...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x7109b96520>
+           │    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x71082d0e10>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/base_events.py", line 637, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x7109b96480>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/base_events.py", line 604, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x7109b9c2c0>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/base_events.py", line 1909, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x7109b391c0>
+    └ <Handle <TaskStepMethWrapper object at 0x71078d93c0>()>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle <TaskStepMethWrapper object at 0x71078d93c0>()>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle <TaskStepMethWrapper object at 0x71078d93c0>()>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle <TaskStepMethWrapper object at 0x71078d93c0>()>
+  File "/data/data/com.termux/files/home/python/telegram-bot-products/venv/lib/python3.11/site-packages/telebot/async_telebot.py", line 502, in _run_middlewares_and_handlers
+    result = await handler['function'](message)
+                   │                   └ <telebot.types.Message object at 0x7107665c10>
+                   └ {'function': <function bot_func at 0x71078e0400>, 'pass_bot': False, 'filters': {'content_types': ['text']}}
+
+> File "/data/data/com.termux/files/home/python/telegram-bot-products/djangoproject/products/telegrambot.py", line 73, in bot_func
+    products = await gen_product_button(1)
+                     └ <function gen_product_button at 0x71078b7ba0>
+
+  File "/data/data/com.termux/files/home/python/telegram-bot-products/djangoproject/products/telegrambot.py", line 37, in gen_product_button
+    products_count = await get_products_count()
+                           └ <function get_products_count at 0x71080a7380>
+
+  File "/data/data/com.termux/files/home/python/telegram-bot-products/djangoproject/dborm.py", line 16, in get_products_count
+    return await sync_to_async(ProductList.objects.count)()
+                 └ <function sync_to_async at 0x71095823e0>
+
+NameError: name 'ProductList' is not defined
+2022-11-07T23:18:30.349048+0200 ERROR An error has been caught in function 'bot_func', process 'MainProcess' (19568), thread 'MainThread' (485566312144):
+Traceback (most recent call last):
+
+  File "/data/data/com.termux/files/home/python/telegram-bot-products/djangoproject/products/telegrambot.py", line 85, in <module>
+    asyncio.run(bot.polling(non_stop=True, interval=1, timeout=0))
+    │       │   │   └ <function AsyncTeleBot.polling at 0x7109058040>
+    │       │   └ <telebot.async_telebot.AsyncTeleBot object at 0x71078de550>
+    │       └ <function run at 0x7109b9c5e0>
+    └ <module 'asyncio' from '/data/data/com.termux/files/usr/lib/python3.11/asyncio/__init__.py'>
+
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           │      │   └ <coroutine object AsyncTeleBot.polling at 0x71078656d0>
+           │      └ <function Runner.run at 0x7109b9c9a0>
+           └ <asyncio.runners.Runner object at 0x71082d0e10>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<AsyncTeleBot.polling() running at /data/data/com.termux/files/home/python/telegram-bot-prod...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x7109b96520>
+           │    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x71082d0e10>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/base_events.py", line 637, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x7109b96480>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/base_events.py", line 604, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x7109b9c2c0>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/base_events.py", line 1909, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x7109b391c0>
+    └ <Handle <TaskStepMethWrapper object at 0x71078d93c0>()>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle <TaskStepMethWrapper object at 0x71078d93c0>()>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle <TaskStepMethWrapper object at 0x71078d93c0>()>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle <TaskStepMethWrapper object at 0x71078d93c0>()>
+  File "/data/data/com.termux/files/home/python/telegram-bot-products/venv/lib/python3.11/site-packages/telebot/async_telebot.py", line 502, in _run_middlewares_and_handlers
+    result = await handler['function'](message)
+                   │                   └ <telebot.types.Message object at 0x7107665c10>
+                   └ {'function': <function bot_func at 0x71078e0400>, 'pass_bot': False, 'filters': {'content_types': ['text']}}
+
+> File "/data/data/com.termux/files/home/python/telegram-bot-products/djangoproject/products/telegrambot.py", line 74, in bot_func
+    pages = await gen_page_button(1)
+                  └ <function gen_page_button at 0x71078b7f60>
+
+  File "/data/data/com.termux/files/home/python/telegram-bot-products/djangoproject/products/telegrambot.py", line 52, in gen_page_button
+    page_count = math.ceil(await sync_to_async(ProductsList.objects.count)() / 10)
+                 │    │          └ <function sync_to_async at 0x71095823e0>
+                 │    └ <built-in function ceil>
+                 └ <module 'math' from '/data/data/com.termux/files/usr/lib/python3.11/lib-dynload/math.cpython-311.so'>
+
+NameError: name 'ProductsList' is not defined
+2022-11-07T23:18:30.371472+0200 ERROR An error has been caught in function '_run_middlewares_and_handlers', process 'MainProcess' (19568), thread 'MainThread' (485566312144):
+Traceback (most recent call last):
+
+  File "/data/data/com.termux/files/home/python/telegram-bot-products/djangoproject/products/telegrambot.py", line 85, in <module>
+    asyncio.run(bot.polling(non_stop=True, interval=1, timeout=0))
+    │       │   │   └ <function AsyncTeleBot.polling at 0x7109058040>
+    │       │   └ <telebot.async_telebot.AsyncTeleBot object at 0x71078de550>
+    │       └ <function run at 0x7109b9c5e0>
+    └ <module 'asyncio' from '/data/data/com.termux/files/usr/lib/python3.11/asyncio/__init__.py'>
+
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           │      │   └ <coroutine object AsyncTeleBot.polling at 0x71078656d0>
+           │      └ <function Runner.run at 0x7109b9c9a0>
+           └ <asyncio.runners.Runner object at 0x71082d0e10>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<AsyncTeleBot.polling() running at /data/data/com.termux/files/home/python/telegram-bot-prod...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x7109b96520>
+           │    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x71082d0e10>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/base_events.py", line 637, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x7109b96480>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/base_events.py", line 604, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x7109b9c2c0>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/base_events.py", line 1909, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x7109b391c0>
+    └ <Handle <TaskStepMethWrapper object at 0x71078d93c0>()>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle <TaskStepMethWrapper object at 0x71078d93c0>()>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle <TaskStepMethWrapper object at 0x71078d93c0>()>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle <TaskStepMethWrapper object at 0x71078d93c0>()>
+> File "/data/data/com.termux/files/home/python/telegram-bot-products/venv/lib/python3.11/site-packages/telebot/async_telebot.py", line 502, in _run_middlewares_and_handlers
+    result = await handler['function'](message)
+                   │                   └ <telebot.types.Message object at 0x7107665c10>
+                   └ {'function': <function bot_func at 0x71078e0400>, 'pass_bot': False, 'filters': {'content_types': ['text']}}
+
+  File "/data/data/com.termux/files/home/python/telegram-bot-products/djangoproject/products/telegrambot.py", line 77, in bot_func
+    markup = types.InlineKeyboardMarkup([*products, pages])
+             │     │                      │         └ None
+             │     │                      └ None
+             │     └ <class 'telebot.types.InlineKeyboardMarkup'>
+             └ <module 'telebot.types' from '/data/data/com.termux/files/home/python/telegram-bot-products/venv/lib/python3.11/site-packages...
+
+TypeError: Value after * must be an iterable, not NoneType
+2022-11-07T23:19:06.470697+0200 INFO Start bot
+2022-11-07T23:19:06.626711+0200 INFO Stopping the application
+2022-11-07T23:21:10.355728+0200 INFO Start bot
+2022-11-07T23:21:16.845443+0200 INFO 2032701686 | press "Products"
+2022-11-07T23:21:16.881639+0200 ERROR An error has been caught in function 'bot_func', process 'MainProcess' (20036), thread 'MainThread' (540598484688):
+Traceback (most recent call last):
+
+  File "/data/data/com.termux/files/home/python/telegram-bot-products/djangoproject/products/telegrambot.py", line 85, in <module>
+    asyncio.run(bot.polling(non_stop=True, interval=1, timeout=0))
+    │       │   │   └ <function AsyncTeleBot.polling at 0x7dd9314040>
+    │       │   └ <telebot.async_telebot.AsyncTeleBot object at 0x7dd7ba25d0>
+    │       └ <function run at 0x7dd9e645e0>
+    └ <module 'asyncio' from '/data/data/com.termux/files/usr/lib/python3.11/asyncio/__init__.py'>
+
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           │      │   └ <coroutine object AsyncTeleBot.polling at 0x7dd7b296d0>
+           │      └ <function Runner.run at 0x7dd9e649a0>
+           └ <asyncio.runners.Runner object at 0x7dd7d4f090>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<AsyncTeleBot.polling() running at /data/data/com.termux/files/home/python/telegram-bot-prod...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x7dd9e5e520>
+           │    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x7dd7d4f090>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/base_events.py", line 637, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x7dd9e5e480>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/base_events.py", line 604, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x7dd9e642c0>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/base_events.py", line 1909, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x7dd9e011c0>
+    └ <Handle Task.task_wakeup(<Future finished result=286>)>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle Task.task_wakeup(<Future finished result=286>)>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle Task.task_wakeup(<Future finished result=286>)>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle Task.task_wakeup(<Future finished result=286>)>
+  File "/data/data/com.termux/files/home/python/telegram-bot-products/venv/lib/python3.11/site-packages/telebot/async_telebot.py", line 502, in _run_middlewares_and_handlers
+    result = await handler['function'](message)
+                   │                   └ <telebot.types.Message object at 0x7dd7bac710>
+                   └ {'function': <function bot_func at 0x7dd7ba4400>, 'pass_bot': False, 'filters': {'content_types': ['text']}}
+
+> File "/data/data/com.termux/files/home/python/telegram-bot-products/djangoproject/products/telegrambot.py", line 73, in bot_func
+    products = await gen_product_button(1)
+                     └ <function gen_product_button at 0x7dd7b7bba0>
+
+  File "/data/data/com.termux/files/home/python/telegram-bot-products/djangoproject/products/telegrambot.py", line 42, in gen_product_button
+    product = await sync_to_async(ProductsList.objects.get)(id=(page + (i + 1)))
+                    │                                           │       └ 0
+                    │                                           └ 0
+                    └ <function sync_to_async at 0x7dd983a3e0>
+
+NameError: name 'ProductsList' is not defined
+2022-11-07T23:21:16.950448+0200 ERROR An error has been caught in function 'bot_func', process 'MainProcess' (20036), thread 'MainThread' (540598484688):
+Traceback (most recent call last):
+
+  File "/data/data/com.termux/files/home/python/telegram-bot-products/djangoproject/products/telegrambot.py", line 85, in <module>
+    asyncio.run(bot.polling(non_stop=True, interval=1, timeout=0))
+    │       │   │   └ <function AsyncTeleBot.polling at 0x7dd9314040>
+    │       │   └ <telebot.async_telebot.AsyncTeleBot object at 0x7dd7ba25d0>
+    │       └ <function run at 0x7dd9e645e0>
+    └ <module 'asyncio' from '/data/data/com.termux/files/usr/lib/python3.11/asyncio/__init__.py'>
+
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           │      │   └ <coroutine object AsyncTeleBot.polling at 0x7dd7b296d0>
+           │      └ <function Runner.run at 0x7dd9e649a0>
+           └ <asyncio.runners.Runner object at 0x7dd7d4f090>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<AsyncTeleBot.polling() running at /data/data/com.termux/files/home/python/telegram-bot-prod...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x7dd9e5e520>
+           │    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x7dd7d4f090>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/base_events.py", line 637, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x7dd9e5e480>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/base_events.py", line 604, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x7dd9e642c0>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/base_events.py", line 1909, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x7dd9e011c0>
+    └ <Handle Task.task_wakeup(<Future finished result=286>)>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle Task.task_wakeup(<Future finished result=286>)>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle Task.task_wakeup(<Future finished result=286>)>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle Task.task_wakeup(<Future finished result=286>)>
+  File "/data/data/com.termux/files/home/python/telegram-bot-products/venv/lib/python3.11/site-packages/telebot/async_telebot.py", line 502, in _run_middlewares_and_handlers
+    result = await handler['function'](message)
+                   │                   └ <telebot.types.Message object at 0x7dd7bac710>
+                   └ {'function': <function bot_func at 0x7dd7ba4400>, 'pass_bot': False, 'filters': {'content_types': ['text']}}
+
+> File "/data/data/com.termux/files/home/python/telegram-bot-products/djangoproject/products/telegrambot.py", line 74, in bot_func
+    pages = await gen_page_button(1)
+                  └ <function gen_page_button at 0x7dd7b7bf60>
+
+  File "/data/data/com.termux/files/home/python/telegram-bot-products/djangoproject/products/telegrambot.py", line 52, in gen_page_button
+    page_count = math.ceil(await sync_to_async(ProductsList.objects.count)() / 10)
+                 │    │          └ <function sync_to_async at 0x7dd983a3e0>
+                 │    └ <built-in function ceil>
+                 └ <module 'math' from '/data/data/com.termux/files/usr/lib/python3.11/lib-dynload/math.cpython-311.so'>
+
+NameError: name 'ProductsList' is not defined
+2022-11-07T23:21:16.981966+0200 ERROR An error has been caught in function '_run_middlewares_and_handlers', process 'MainProcess' (20036), thread 'MainThread' (540598484688):
+Traceback (most recent call last):
+
+  File "/data/data/com.termux/files/home/python/telegram-bot-products/djangoproject/products/telegrambot.py", line 85, in <module>
+    asyncio.run(bot.polling(non_stop=True, interval=1, timeout=0))
+    │       │   │   └ <function AsyncTeleBot.polling at 0x7dd9314040>
+    │       │   └ <telebot.async_telebot.AsyncTeleBot object at 0x7dd7ba25d0>
+    │       └ <function run at 0x7dd9e645e0>
+    └ <module 'asyncio' from '/data/data/com.termux/files/usr/lib/python3.11/asyncio/__init__.py'>
+
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           │      │   └ <coroutine object AsyncTeleBot.polling at 0x7dd7b296d0>
+           │      └ <function Runner.run at 0x7dd9e649a0>
+           └ <asyncio.runners.Runner object at 0x7dd7d4f090>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<AsyncTeleBot.polling() running at /data/data/com.termux/files/home/python/telegram-bot-prod...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x7dd9e5e520>
+           │    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x7dd7d4f090>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/base_events.py", line 637, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x7dd9e5e480>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/base_events.py", line 604, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x7dd9e642c0>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/base_events.py", line 1909, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x7dd9e011c0>
+    └ <Handle Task.task_wakeup(<Future finished result=286>)>
+  File "/data/data/com.termux/files/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle Task.task_wakeup(<Future finished result=286>)>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle Task.task_wakeup(<Future finished result=286>)>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle Task.task_wakeup(<Future finished result=286>)>
+> File "/data/data/com.termux/files/home/python/telegram-bot-products/venv/lib/python3.11/site-packages/telebot/async_telebot.py", line 502, in _run_middlewares_and_handlers
+    result = await handler['function'](message)
+                   │                   └ <telebot.types.Message object at 0x7dd7bac710>
+                   └ {'function': <function bot_func at 0x7dd7ba4400>, 'pass_bot': False, 'filters': {'content_types': ['text']}}
+
+  File "/data/data/com.termux/files/home/python/telegram-bot-products/djangoproject/products/telegrambot.py", line 77, in bot_func
+    markup = types.InlineKeyboardMarkup([*products, pages])
+             │     │                      │         └ None
+             │     │                      └ None
+             │     └ <class 'telebot.types.InlineKeyboardMarkup'>
+             └ <module 'telebot.types' from '/data/data/com.termux/files/home/python/telegram-bot-products/venv/lib/python3.11/site-packages...
+
+TypeError: Value after * must be an iterable, not NoneType
+2022-11-07T23:22:09.039249+0200 INFO Start bot
+2022-11-07T23:22:10.274795+0200 INFO Start bot
+2022-11-07T23:22:11.172917+0200 INFO Start bot
+2022-11-07T23:22:11.322272+0200 INFO Stopping the application
