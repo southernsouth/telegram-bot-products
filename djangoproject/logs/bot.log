@@ -9117,3 +9117,311 @@ TypeError: 'InlineKeyboardButton' object is not iterable
 2022-11-08T01:43:18.879679+0200 INFO 2032701686 | press "Products"
 2022-11-08T01:46:27.865012+0200 INFO Start bot
 2022-11-08T01:46:28.019248+0200 INFO Stopping the application
+2022-11-08T11:25:56.530540+0000 INFO Start bot
+2022-11-08T11:27:58.821656+0000 INFO 2032701686 | press "Products"
+2022-11-08T11:30:37.030493+0000 INFO Stopping the application
+2022-11-08T12:11:23.197763+0000 INFO Start bot
+2022-11-08T12:11:27.203694+0000 INFO 2032701686 | press "Products"
+2022-11-08T12:11:47.026399+0000 INFO Stopping the application
+2022-11-08T12:12:13.598130+0000 INFO Start bot
+2022-11-08T12:12:22.966865+0000 INFO 2032701686 | press "Products"
+2022-11-08T12:12:33.881373+0000 INFO Stopping the application
+2022-11-08T12:23:21.735501+0000 INFO Start bot
+2022-11-08T12:23:25.064891+0000 INFO 2032701686 | press "Products"
+2022-11-08T12:24:17.614385+0000 INFO Stopping the application
+2022-11-08T12:24:42.040007+0000 INFO Start bot
+2022-11-08T12:24:45.606875+0000 INFO 2032701686 | press "Products"
+2022-11-08T12:25:50.478358+0000 INFO Stopping the application
+2022-11-08T12:34:13.091749+0000 INFO Start bot
+2022-11-08T12:34:18.792782+0000 INFO 2032701686 | press "Products"
+2022-11-08T12:34:32.651975+0000 INFO 2032701686 | press "Products"
+2022-11-08T12:34:52.035726+0000 INFO Stopping the application
+2022-11-08T12:35:28.410061+0000 INFO Start bot
+2022-11-08T12:35:31.104225+0000 INFO 2032701686 | press "Products"
+2022-11-08T12:36:45.698222+0000 INFO Stopping the application
+2022-11-08T12:48:24.835520+0000 INFO Start bot
+2022-11-08T12:48:25.316924+0000 INFO 2032701686 | press "Products"
+2022-11-08T12:48:25.369519+0000 ERROR An error has been caught in function '_run_middlewares_and_handlers', process 'MainProcess' (8472), thread 'MainThread' (139980508104512):
+Traceback (most recent call last):
+
+  File "/home/south/python/telegram-bot-products/djangoproject/products/telegrambot.py", line 95, in <module>
+    asyncio.run(bot.polling(non_stop=True, interval=1, timeout=0))
+    │       │   │   └ <function AsyncTeleBot.polling at 0x7f4fb0fb0670>
+    │       │   └ <telebot.async_telebot.AsyncTeleBot object at 0x7f4fb014b1f0>
+    │       └ <function run at 0x7f4fb1475900>
+    └ <module 'asyncio' from '/usr/lib64/python3.10/asyncio/__init__.py'>
+
+  File "/usr/lib64/python3.10/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+           │    │                  └ <coroutine object AsyncTeleBot.polling at 0x7f4faffb61f0>
+           │    └ <function BaseEventLoop.run_until_complete at 0x7f4fb1322710>
+           └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/usr/lib64/python3.10/asyncio/base_events.py", line 636, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x7f4fb1322680>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/usr/lib64/python3.10/asyncio/base_events.py", line 603, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x7f4fb13281f0>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/usr/lib64/python3.10/asyncio/base_events.py", line 1899, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x7f4fb14b7b50>
+    └ <Handle Task.task_wakeup(<Future finished result=284>)>
+  File "/usr/lib64/python3.10/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle Task.task_wakeup(<Future finished result=284>)>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle Task.task_wakeup(<Future finished result=284>)>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle Task.task_wakeup(<Future finished result=284>)>
+> File "/home/south/.local/lib/python3.10/site-packages/telebot/async_telebot.py", line 502, in _run_middlewares_and_handlers
+    result = await handler['function'](message)
+                   │                   └ <telebot.types.Message object at 0x7f4faffe9a20>
+                   └ {'function': <function bot_func at 0x7f4faffe7760>, 'pass_bot': False, 'filters': {'content_types': ['text']}}
+
+  File "/home/south/python/telegram-bot-products/djangoproject/products/telegrambot.py", line 87, in bot_func
+    await bot.editMessageRypleMarkup(message.chat.id, message.id, reply_markup=None)
+          │                          │       │    │   │       └ 220
+          │                          │       │    │   └ <telebot.types.Message object at 0x7f4faffe9a20>
+          │                          │       │    └ 2032701686
+          │                          │       └ <telebot.types.Chat object at 0x7f4faffea5f0>
+          │                          └ <telebot.types.Message object at 0x7f4faffe9a20>
+          └ <telebot.async_telebot.AsyncTeleBot object at 0x7f4fb014b1f0>
+
+AttributeError: 'AsyncTeleBot' object has no attribute 'editMessageRypleMarkup'
+2022-11-08T12:48:34.758694+0000 INFO Stopping the application
+2022-11-08T12:58:26.982449+0000 INFO Start bot
+2022-11-08T12:58:30.516973+0000 INFO 2032701686 | press "Products"
+2022-11-08T12:58:38.607432+0000 INFO 2032701686 | start bot
+2022-11-08T12:58:41.374884+0000 INFO 2032701686 | press "Products"
+2022-11-08T12:58:45.231285+0000 INFO 2032701686 | press "Products"
+2022-11-08T13:00:22.426607+0000 INFO Stopping the application
+2022-11-08T13:00:51.271625+0000 INFO Start bot
+2022-11-08T13:01:07.055848+0000 INFO 2032701686 | start bot
+2022-11-08T13:01:13.279210+0000 INFO 2032701686 | press "Products"
+2022-11-08T13:01:21.732217+0000 INFO Stopping the application
+2022-11-08T13:11:37.772635+0000 INFO Start bot
+2022-11-08T13:11:47.168141+0000 INFO 2032701686 | start bot
+2022-11-08T13:11:49.682175+0000 INFO 2032701686 | press "Products"
+2022-11-08T13:11:49.739647+0000 ERROR An error has been caught in function '_run_middlewares_and_handlers', process 'MainProcess' (9827), thread 'MainThread' (139722307188544):
+Traceback (most recent call last):
+
+  File "/home/south/python/telegram-bot-products/djangoproject/products/telegrambot.py", line 94, in <module>
+    asyncio.run(bot.polling(non_stop=True, interval=1, timeout=0))
+    │       │   │   └ <function AsyncTeleBot.polling at 0x7f1393028670>
+    │       │   └ <telebot.async_telebot.AsyncTeleBot object at 0x7f13921b70d0>
+    │       └ <function run at 0x7f1393509900>
+    └ <module 'asyncio' from '/usr/lib64/python3.10/asyncio/__init__.py'>
+
+  File "/usr/lib64/python3.10/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+           │    │                  └ <coroutine object AsyncTeleBot.polling at 0x7f13920221f0>
+           │    └ <function BaseEventLoop.run_until_complete at 0x7f13933b2710>
+           └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/usr/lib64/python3.10/asyncio/base_events.py", line 636, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x7f13933b2680>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/usr/lib64/python3.10/asyncio/base_events.py", line 603, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x7f13933b81f0>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/usr/lib64/python3.10/asyncio/base_events.py", line 1899, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x7f139334bb50>
+    └ <Handle Task.task_wakeup(<Future finished result=284>)>
+  File "/usr/lib64/python3.10/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle Task.task_wakeup(<Future finished result=284>)>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle Task.task_wakeup(<Future finished result=284>)>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle Task.task_wakeup(<Future finished result=284>)>
+> File "/home/south/.local/lib/python3.10/site-packages/telebot/async_telebot.py", line 502, in _run_middlewares_and_handlers
+    result = await handler['function'](message)
+                   │                   └ <telebot.types.Message object at 0x7f1392057430>
+                   └ {'function': <function bot_func at 0x7f1392053760>, 'pass_bot': False, 'filters': {'content_types': ['text']}}
+
+  File "/home/south/python/telegram-bot-products/djangoproject/products/telegrambot.py", line 85, in bot_func
+    markup = types.InlineKeyboardMarkup([*products, pages, types.RypleKeyboardRemove()])
+             │     │                      │         │      └ <module 'telebot.types' from '/home/south/.local/lib/python3.10/site-packages/telebot/types.py'>
+             │     │                      │         └ [<telebot.types.InlineKeyboardButton object at 0x7f13920570a0>, <telebot.types.InlineKeyboardButton object at 0x7f1392057be0>...
+             │     │                      └ [[<telebot.types.InlineKeyboardButton object at 0x7f1392057640>], [<telebot.types.InlineKeyboardButton object at 0x7f13920575...
+             │     └ <class 'telebot.types.InlineKeyboardMarkup'>
+             └ <module 'telebot.types' from '/home/south/.local/lib/python3.10/site-packages/telebot/types.py'>
+
+AttributeError: module 'telebot.types' has no attribute 'RypleKeyboardRemove'
+2022-11-08T13:12:51.055663+0000 INFO Stopping the application
+2022-11-08T13:13:15.717518+0000 INFO Start bot
+2022-11-08T13:13:21.199679+0000 INFO 2032701686 | start bot
+2022-11-08T13:13:23.343255+0000 INFO 2032701686 | press "Products"
+2022-11-08T13:13:23.401182+0000 ERROR An error has been caught in function '_run_middlewares_and_handlers', process 'MainProcess' (9900), thread 'MainThread' (140607158523712):
+Traceback (most recent call last):
+
+  File "/home/south/python/telegram-bot-products/djangoproject/products/telegrambot.py", line 94, in <module>
+    asyncio.run(bot.polling(non_stop=True, interval=1, timeout=0))
+    │       │   │   └ <function AsyncTeleBot.polling at 0x7fe198428670>
+    │       │   └ <telebot.async_telebot.AsyncTeleBot object at 0x7fe1975b7070>
+    │       └ <function run at 0x7fe198909900>
+    └ <module 'asyncio' from '/usr/lib64/python3.10/asyncio/__init__.py'>
+
+  File "/usr/lib64/python3.10/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+           │    │                  └ <coroutine object AsyncTeleBot.polling at 0x7fe1974221f0>
+           │    └ <function BaseEventLoop.run_until_complete at 0x7fe1987b2710>
+           └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/usr/lib64/python3.10/asyncio/base_events.py", line 636, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x7fe1987b2680>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/usr/lib64/python3.10/asyncio/base_events.py", line 603, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x7fe1987b81f0>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/usr/lib64/python3.10/asyncio/base_events.py", line 1899, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x7fe19874bb50>
+    └ <Handle Task.task_wakeup(<Future finished result=284>)>
+  File "/usr/lib64/python3.10/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle Task.task_wakeup(<Future finished result=284>)>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle Task.task_wakeup(<Future finished result=284>)>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle Task.task_wakeup(<Future finished result=284>)>
+> File "/home/south/.local/lib/python3.10/site-packages/telebot/async_telebot.py", line 502, in _run_middlewares_and_handlers
+    result = await handler['function'](message)
+                   │                   └ <telebot.types.Message object at 0x7fe1974573d0>
+                   └ {'function': <function bot_func at 0x7fe197453760>, 'pass_bot': False, 'filters': {'content_types': ['text']}}
+
+  File "/home/south/python/telegram-bot-products/djangoproject/products/telegrambot.py", line 87, in bot_func
+    await bot.send_message(message.chat.id, 'Products:', reply_markup=markup)
+          │   │            │       │    │                             └ <telebot.types.InlineKeyboardMarkup object at 0x7fe1974578b0>
+          │   │            │       │    └ 2032701686
+          │   │            │       └ <telebot.types.Chat object at 0x7fe197457370>
+          │   │            └ <telebot.types.Message object at 0x7fe1974573d0>
+          │   └ <function AsyncTeleBot.send_message at 0x7fe19842bd00>
+          └ <telebot.async_telebot.AsyncTeleBot object at 0x7fe1975b7070>
+
+  File "/home/south/.local/lib/python3.10/site-packages/telebot/async_telebot.py", line 2397, in send_message
+    await asyncio_helper.send_message(
+          │              └ <function send_message at 0x7fe19841c430>
+          └ <module 'telebot.asyncio_helper' from '/home/south/.local/lib/python3.10/site-packages/telebot/asyncio_helper.py'>
+  File "/home/south/.local/lib/python3.10/site-packages/telebot/asyncio_helper.py", line 305, in send_message
+    params['reply_markup'] = await _convert_markup(reply_markup)
+    │                              │               └ <telebot.types.InlineKeyboardMarkup object at 0x7fe1974578b0>
+    │                              └ <function _convert_markup at 0x7fe19840bd00>
+    └ {'chat_id': '2032701686', 'text': 'Products:'}
+  File "/home/south/.local/lib/python3.10/site-packages/telebot/asyncio_helper.py", line 147, in _convert_markup
+    return markup.to_json()
+           │      └ <function InlineKeyboardMarkup.to_json at 0x7fe1995175b0>
+           └ <telebot.types.InlineKeyboardMarkup object at 0x7fe1974578b0>
+  File "/home/south/.local/lib/python3.10/site-packages/telebot/types.py", line 2267, in to_json
+    return json.dumps(self.to_dict())
+           │    │     │    └ <function InlineKeyboardMarkup.to_dict at 0x7fe199517640>
+           │    │     └ <telebot.types.InlineKeyboardMarkup object at 0x7fe1974578b0>
+           │    └ <function dumps at 0x7fe199503d00>
+           └ <module 'json' from '/usr/lib64/python3.10/json/__init__.py'>
+  File "/home/south/.local/lib/python3.10/site-packages/telebot/types.py", line 2271, in to_dict
+    json_dict['inline_keyboard'] = [[button.to_dict() for button in row] for row in self.keyboard]
+    │                                                                               │    └ [[<telebot.types.InlineKeyboardButton object at 0x7fe1974575e0>], [<telebot.types.InlineKeyboardButton object at 0x7fe1974575...
+    │                                                                               └ <telebot.types.InlineKeyboardMarkup object at 0x7fe1974578b0>
+    └ {}
+  File "/home/south/.local/lib/python3.10/site-packages/telebot/types.py", line 2271, in <listcomp>
+    json_dict['inline_keyboard'] = [[button.to_dict() for button in row] for row in self.keyboard]
+                                                                    │        └ <telebot.types.ReplyKeyboardRemove object at 0x7fe197457190>
+                                                                    └ <telebot.types.ReplyKeyboardRemove object at 0x7fe197457190>
+
+TypeError: 'ReplyKeyboardRemove' object is not iterable
+2022-11-08T13:13:50.718273+0000 INFO Stopping the application
+2022-11-08T13:15:04.541696+0000 INFO Start bot
+2022-11-08T13:15:12.073760+0000 INFO 2032701686 | start bot
+2022-11-08T13:15:14.312139+0000 INFO 2032701686 | press "Products"
+2022-11-08T13:15:14.363952+0000 ERROR An error has been caught in function '_run_middlewares_and_handlers', process 'MainProcess' (9988), thread 'MainThread' (139917281167168):
+Traceback (most recent call last):
+
+  File "/home/south/python/telegram-bot-products/djangoproject/products/telegrambot.py", line 94, in <module>
+    asyncio.run(bot.polling(non_stop=True, interval=1, timeout=0))
+    │       │   │   └ <function AsyncTeleBot.polling at 0x7f40f85c4670>
+    │       │   └ <telebot.async_telebot.AsyncTeleBot object at 0x7f40f7767040>
+    │       └ <function run at 0x7f40f8a75900>
+    └ <module 'asyncio' from '/usr/lib64/python3.10/asyncio/__init__.py'>
+
+  File "/usr/lib64/python3.10/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+           │    │                  └ <coroutine object AsyncTeleBot.polling at 0x7f40f75d21f0>
+           │    └ <function BaseEventLoop.run_until_complete at 0x7f40f8922710>
+           └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/usr/lib64/python3.10/asyncio/base_events.py", line 636, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x7f40f8922680>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/usr/lib64/python3.10/asyncio/base_events.py", line 603, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x7f40f89281f0>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/usr/lib64/python3.10/asyncio/base_events.py", line 1899, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x7f40f8ab7b50>
+    └ <Handle Task.task_wakeup(<Future finished result=284>)>
+  File "/usr/lib64/python3.10/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle Task.task_wakeup(<Future finished result=284>)>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle Task.task_wakeup(<Future finished result=284>)>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle Task.task_wakeup(<Future finished result=284>)>
+> File "/home/south/.local/lib/python3.10/site-packages/telebot/async_telebot.py", line 502, in _run_middlewares_and_handlers
+    result = await handler['function'](message)
+                   │                   └ <telebot.types.Message object at 0x7f40f76073a0>
+                   └ {'function': <function bot_func at 0x7f40f7603760>, 'pass_bot': False, 'filters': {'content_types': ['text']}}
+
+  File "/home/south/python/telegram-bot-products/djangoproject/products/telegrambot.py", line 87, in bot_func
+    await bot.send_message(message.chat.id, 'Products:', reply_markup=markup)
+          │   │            │       │    │                             └ <telebot.types.InlineKeyboardMarkup object at 0x7f40f7607880>
+          │   │            │       │    └ 2032701686
+          │   │            │       └ <telebot.types.Chat object at 0x7f40f7607340>
+          │   │            └ <telebot.types.Message object at 0x7f40f76073a0>
+          │   └ <function AsyncTeleBot.send_message at 0x7f40f85c7d00>
+          └ <telebot.async_telebot.AsyncTeleBot object at 0x7f40f7767040>
+
+  File "/home/south/.local/lib/python3.10/site-packages/telebot/async_telebot.py", line 2397, in send_message
+    await asyncio_helper.send_message(
+          │              └ <function send_message at 0x7f40f85b4430>
+          └ <module 'telebot.asyncio_helper' from '/home/south/.local/lib/python3.10/site-packages/telebot/asyncio_helper.py'>
+  File "/home/south/.local/lib/python3.10/site-packages/telebot/asyncio_helper.py", line 305, in send_message
+    params['reply_markup'] = await _convert_markup(reply_markup)
+    │                              │               └ <telebot.types.InlineKeyboardMarkup object at 0x7f40f7607880>
+    │                              └ <function _convert_markup at 0x7f40f85a7d00>
+    └ {'chat_id': '2032701686', 'text': 'Products:'}
+  File "/home/south/.local/lib/python3.10/site-packages/telebot/asyncio_helper.py", line 147, in _convert_markup
+    return markup.to_json()
+           │      └ <function InlineKeyboardMarkup.to_json at 0x7f40f97175b0>
+           └ <telebot.types.InlineKeyboardMarkup object at 0x7f40f7607880>
+  File "/home/south/.local/lib/python3.10/site-packages/telebot/types.py", line 2267, in to_json
+    return json.dumps(self.to_dict())
+           │    │     │    └ <function InlineKeyboardMarkup.to_dict at 0x7f40f9717640>
+           │    │     └ <telebot.types.InlineKeyboardMarkup object at 0x7f40f7607880>
+           │    └ <function dumps at 0x7f40f9703d00>
+           └ <module 'json' from '/usr/lib64/python3.10/json/__init__.py'>
+  File "/home/south/.local/lib/python3.10/site-packages/telebot/types.py", line 2271, in to_dict
+    json_dict['inline_keyboard'] = [[button.to_dict() for button in row] for row in self.keyboard]
+    │                                                                               │    └ [[<telebot.types.InlineKeyboardButton object at 0x7f40f76075b0>], [<telebot.types.InlineKeyboardButton object at 0x7f40f76075...
+    │                                                                               └ <telebot.types.InlineKeyboardMarkup object at 0x7f40f7607880>
+    └ {}
+  File "/home/south/.local/lib/python3.10/site-packages/telebot/types.py", line 2271, in <listcomp>
+    json_dict['inline_keyboard'] = [[button.to_dict() for button in row] for row in self.keyboard]
+                                                                    │        └ [<telebot.types.ReplyKeyboardRemove object at 0x7f40f7607af0>]
+                                                                    └ [<telebot.types.ReplyKeyboardRemove object at 0x7f40f7607af0>]
+  File "/home/south/.local/lib/python3.10/site-packages/telebot/types.py", line 2271, in <listcomp>
+    json_dict['inline_keyboard'] = [[button.to_dict() for button in row] for row in self.keyboard]
+                                     │                    └ <telebot.types.ReplyKeyboardRemove object at 0x7f40f7607af0>
+                                     └ <telebot.types.ReplyKeyboardRemove object at 0x7f40f7607af0>
+
+AttributeError: 'ReplyKeyboardRemove' object has no attribute 'to_dict'
+2022-11-08T13:23:47.428635+0000 INFO Stopping the application

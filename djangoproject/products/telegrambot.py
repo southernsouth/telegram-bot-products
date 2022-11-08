@@ -48,19 +48,26 @@ async def gen_product_button(page=int):
 
 @logger.catch
 async def gen_page_button(page=int):
-    page_index = page - 2
-    if page_index < 1: page_index = 1
     pages = []
     page_count = math.ceil(await get_products_count() / 10)
 
-    btn1 = types.InlineKeyboardButton(text='<<', callback_data='<<')
-    btn2 = types.InlineKeyboardButton(text=f'>>', callback_data='>>')
+    btn1 = types.InlineKeyboardButton(text='<<', callback_data='1')
+    btn2 = types.InlineKeyboardButton(text=f'>>', callback_data=str(page_count))
 
+    if page_count - page >= 2:
+        page_index = page - 2
+        if page_index < 1: page_index = 1
+    else:
+        page_index = page + (page_count - page) - 4
+
+    int_list = ['0̲', '1̲', '2̲', '3̲', '4̲', '5̲', '6̲', '7̲', '8̲', '9̲']
     pages.append(btn1)
-    for i in range(page_count):
-        if i == 5:
-            break
-        pages.append(types.InlineKeyboardButton(text=str(page_index + i), callback_data=str(page_index + i)))
+    for i in range(5):
+        text = str(page_index + i)
+        if text == str(page):
+            for i in range(10):
+                text = text.replace(str(i), int_list[i])
+        pages.append(types.InlineKeyboardButton(text=text, callback_data=str(page_index + i)))
     pages.append(btn2)
 
     return pages
@@ -72,13 +79,14 @@ async def bot_func(message):
         logger.info(f'{message.chat.id} | press "Products"')
 
 
-        products = await gen_product_button(29)
-        pages = await gen_page_button(29)
+        products = await gen_product_button(1)
+        pages = await gen_page_button(1)
 
         markup = types.InlineKeyboardMarkup([*products, pages])
 
         await bot.send_message(message.chat.id, 'Products:', reply_markup=markup)
         await bot.delete_message(message.chat.id, message.id)
+    else: await bot.delete_message(message.chat.id, message.id)
 
 while True:
     try:
