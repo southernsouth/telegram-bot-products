@@ -19,8 +19,23 @@ async def get_products_count():
 
 async def get_product_name(id):
     product = await sync_to_async(ProductsList.objects.get)(id=id)
-    product_name = product.product_name
-    return product_name
+    name = product.product_name
+    return name
+
+async def get_product_description(id):
+    product = await sync_to_async(ProductsList.objects.get)(id=id)
+    description = product.description
+    return description
+
+async def get_product_price(id):
+    product = await sync_to_async(ProductsList.objects.get)(id=id)
+    price = product.price
+    return price
+
+async def get_product_image(id):
+    product = await sync_to_async(ProductsList.objects.get)(id=id)
+    image = product.image
+    return image
 
 async def get_products_id():
     products = await sync_to_async(ProductsList.objects.filter)(status=True)
