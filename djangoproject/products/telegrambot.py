@@ -18,6 +18,7 @@ logger.add('logs/bot.log', format='{time} {level} {message}')
 token = '5669662526:AAF5IKDO18_A293S-hEgqPsSdv86HjC5JGM'
 bot = AsyncTeleBot(token)
 
+
 @bot.message_handler(commands=['start', 'help'])
 @logger.catch
 async def send_welcome(message):
@@ -27,7 +28,6 @@ async def send_welcome(message):
     markup = types.InlineKeyboardMarkup([[btn1]])
 
     await bot.send_message(message.chat.id, f'Hello {message.from_user.first_name}', reply_markup = markup)
-    await bot.delete_message(message.chat.id, message.id)
 
 @logger.catch
 async def gen_product_button(page=int):
@@ -55,19 +55,28 @@ async def gen_page_button(page=int):
     btn1 = types.InlineKeyboardButton(text='<<', callback_data='page 1')
     btn2 = types.InlineKeyboardButton(text=f'>>', callback_data='page ' + str(page_count))
 
-    if page_count - page >= 2:
-        page_index = page - 2
-        if page_index < 1: page_index = 1
-    else:
-        page_index = page + (page_count - page) - 4
+    page_count_r = page_count - page
+    page_count_l = page_count - page_count_r - 1
 
+    if page_count >= 5:
+        if page_count_l > 2 and page_count_r > 2: page_count_l = 2
+        else: 
+            if page_count_l > page_count_r: page_count_l = 5 - page_count_r - 1
+    else: 
+        if page_count_l > page_count_r: page_count_l = page_count - page_count_r - 1
+
+    page_index = page - page_count_l
+    if page_count >= 5: for_count = 5
+    else: for_count = page_count
     int_list = ['0̲', '1̲', '2̲', '3̲', '4̲', '5̲', '6̲', '7̲', '8̲', '9̲']
+
     pages.append(btn1)
-    for i in range(5):
+    for i in range(for_count):
         text = str(page_index + i)
-        if text == str(page):
-            for i in range(10):
-                text = text.replace(str(i), int_list[i])
+        if int(text) == page:
+            for x in range(10):
+                text.replace(text, int_list[x])
+
         pages.append(types.InlineKeyboardButton(text=text, callback_data='page ' + str(page_index + i)))
     pages.append(btn2)
 
@@ -92,7 +101,8 @@ async def inline_func(call):
 
         markup = types.InlineKeyboardMarkup([*products, pages, [back_button]])
 
-        await bot.edit_message_text(chat_id=message.chat.id, message_id=message.id, text='Products:', reply_markup=markup)
+        try: await bot.edit_message_text(chat_id=message.chat.id, message_id=message.id, text='Products:', reply_markup=markup)
+        except: ...
     elif 'id' in call.data:
         message = call.message
         logger.info(f'{message.chat.id} | press product button')
@@ -112,10 +122,12 @@ async def inline_func(call):
         if image == '':
             await bot.edit_message_text(chat_id=message.chat.id, message_id=message.id, text=text, reply_markup=markup)
         else:
-            image = django_path + '/' + str(image)
-            await bot.delete_message(message.chat.id, message.id)
-            with open(image, 'rb') as f:
-                await bot.send_photo(message.chat.id, f, caption=text, reply_markup=markup)
+            try:
+                image = django_path + '/' + str(image)
+                with open(image, 'rb') as f:
+                    await bot.delete_message(message.chat.id, message.id)
+                    await bot.send_photo(message.chat.id, f, caption=text, reply_markup=markup)
+            except: await bot.send_message(message.chat.id, 'Clear the chat and restart the bot.')
     elif 'products_back' in call.data:
         message = call.message
         logger.info(f'{message.chat.id} | press "Back" in product')
@@ -127,13 +139,14 @@ async def inline_func(call):
 
         markup = types.InlineKeyboardMarkup([*products, pages, [back_button]])
 
-        await bot.delete_message(message.chat.id, message.id)
-        await bot.send_message(chat_id=message.chat.id, text='Products:', reply_markup=markup)
+        try: 
+            await bot.delete_message(message.chat.id, message.id)
+            await bot.send_message(chat_id=message.chat.id, text='Products:', reply_markup=markup)
+        except: await bot.send_message(message.chat.id, 'Clear the chat and restart the bot.')
 
     elif call.data == 'products':
         message = call.message
         logger.info(f'{message.chat.id} | press "Products"')
-
 
         products = await gen_product_button(1)
         pages = await gen_page_button(1)
@@ -146,10 +159,10 @@ async def inline_func(call):
         message = call.message
         logger.info(f'{message.chat.id} | press "Back"')
 
-        btn1 = types.InlineKeyboardButton('Products',       callback_data='products')
+        btn1 = types.InlineKeyboardButton('Products', callback_data='products')
         markup = types.InlineKeyboardMarkup([[btn1]])
 
-        await bot.edit_message_text(chat_id=message.    chat.id, message_id=message.id, text='Menu:',       reply_markup=markup)
+        await bot.edit_message_text(chat_id=message.chat.id, message_id=message.id, text='Menu:', reply_markup=markup)
 
 while True:
     try:
