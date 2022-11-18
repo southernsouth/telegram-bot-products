@@ -75,7 +75,7 @@ async def gen_page_button(page=int):
         text = str(page_index + i)
         if int(text) == page:
             for x in range(10):
-                text.replace(text, int_list[x])
+                text = text.replace(str(x), int_list[x])
 
         pages.append(types.InlineKeyboardButton(text=text, callback_data='page ' + str(page_index + i)))
     pages.append(btn2)

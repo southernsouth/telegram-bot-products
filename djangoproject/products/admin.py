@@ -8,7 +8,7 @@ from faker import Faker
 class ProductsListAdmin(admin.ModelAdmin):
     list_display = ('product_name', 'price', 'status')
 
-    '''for i in range(1):
+    '''for i in range(10):
         faker = Faker('en_us')
         product_name = faker.name()
         description = 'Nigga'
